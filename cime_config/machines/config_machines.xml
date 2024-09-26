@@ -3967,7 +3967,7 @@
   <machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
     <OS>CNL</OS>
-    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic,nvidiagpu</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/glade/derecho/scratch/$ENV{USER}/inputdata</DIN_LOC_ROOT>
@@ -4031,6 +4031,10 @@
       <modules compiler="nvhpc">
         <command name="load">nvhpc/24.3</command>
       </modules>
+      <modules compiler="nvidiagpu">
+        <command name="load">nvhpc/24.3</command>
+        <command name="load">cuda/12.2.1</command>
+      </modules>
 
       <modules>
 	      <command name="load">ncarcompilers/1.0.0</command>
@@ -4038,10 +4042,6 @@
       </modules>
       <modules mpilib="mpich">
 	      <command name="load">cray-mpich/8.1.27</command>
-      </modules>
-
-      <modules mpilib="mpich" compiler="nvhpc" gpu_offload="!none">
-        <command name="load">cuda/12.2.1</command>
       </modules>
 
       <modules mpilib="mpi-serial">
@@ -4067,7 +4067,7 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvhpc" gpu_offload="!none">
+    <environment_variables compiler="nvidiagpu">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
     </environment_variables>
   </machine>

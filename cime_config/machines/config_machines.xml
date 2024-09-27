@@ -4034,6 +4034,7 @@
       <modules compiler="nvidiagpu">
         <command name="load">nvhpc/24.3</command>
         <command name="load">cuda/12.2.1</command>
+        <command name="load">gcc-toolchain/12.2.0</command>
       </modules>
 
       <modules>
@@ -4069,6 +4070,7 @@
     </environment_variables>
     <environment_variables compiler="nvidiagpu">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
+      <env name="CUDA_ROOT">$ENV{NCAR_ROOT_CUDA}</env>
     </environment_variables>
   </machine>
 

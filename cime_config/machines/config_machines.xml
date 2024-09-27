@@ -3967,7 +3967,7 @@
   <machine MACH="derecho">
     <DESC>NCAR AMD EPYC system</DESC>
     <OS>CNL</OS>
-    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic,nvidiagpu</COMPILERS>
+    <COMPILERS>intel,gnu,nvhpc,intel-oneapi,intel-classic,gnugpu</COMPILERS>
     <MPILIBS>mpich</MPILIBS>
     <CIME_OUTPUT_ROOT>$ENV{SCRATCH}</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/glade/derecho/scratch/$ENV{USER}/inputdata</DIN_LOC_ROOT>
@@ -4024,17 +4024,15 @@
         <command name="load">cce/15.0.1</command>
         <command name="load">cray-libsci/23.02.1.1</command>
       </modules>
-      <modules compiler="gnu">
-        <command name="load">gcc/12.2.0</command>
-        <command name="load">cray-libsci/23.02.1.1</command>
+      <modules compiler="gnu*">
+        <command name="load">gcc/13.2.0</command>
+        <command name="load">cray-libsci/23.09.1.1</command>
       </modules>
       <modules compiler="nvhpc">
         <command name="load">nvhpc/24.3</command>
       </modules>
-      <modules compiler="nvidiagpu">
-        <command name="load">nvhpc/24.3</command>
+      <modules compiler="gnugpu">
         <command name="load">cuda/12.2.1</command>
-        <command name="load">gcc-toolchain/12.2.0</command>
       </modules>
 
       <modules>
@@ -4068,9 +4066,8 @@
       <env name="ESMF_RUNTIME_PROFILE">ON</env>
       <env name="ESMF_RUNTIME_PROFILE_OUTPUT">SUMMARY</env>
     </environment_variables>
-    <environment_variables compiler="nvidiagpu">
+    <environment_variables compiler="gnugpu">
       <env name="NCAR_LIBS_CUDA">-lcuda -lcudart</env>
-      <env name="CUDA_ROOT">$ENV{NCAR_ROOT_CUDA}</env>
     </environment_variables>
   </machine>
 

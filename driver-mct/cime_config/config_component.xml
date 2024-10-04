@@ -3144,6 +3144,15 @@
     <desc>True=>compile the GPU code with OpenMP GPU flags </desc>
   </entry>
 
+  <entry id="KOKKOS_GPU_OFFLOAD">
+    <type>logical</type>
+    <valid_values>TRUE,FALSE</valid_values>
+    <default_value>FALSE</default_value>
+    <group>build_def</group>
+    <file>env_build.xml</file>
+    <desc>True=>compile the GPU code with KOKKOS GPU target </desc>
+  </entry>
+
   <entry id="MPI_GPU_WRAPPER_SCRIPT">
     <type>char</type>
     <valid_values></valid_values>
